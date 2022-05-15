@@ -9,11 +9,9 @@ const app = (0, express_1.default)();
 const connect_1 = __importDefault(require("./db/connect"));
 const dotenv_1 = require("dotenv");
 (0, dotenv_1.config)();
+// middleware
+app.use(express_1.default.static(__dirname + "/public"));
 app.use(express_1.default.json());
-// routes
-app.get("/hello", (req, res) => {
-    res.send("Task Manager App");
-});
 app.use("/api/v1/tasks", tasks_1.default);
 // app.get('/api/v1/tasks')          - get all the tasks
 // app.post('/api/v1/tasks')         - create a new task

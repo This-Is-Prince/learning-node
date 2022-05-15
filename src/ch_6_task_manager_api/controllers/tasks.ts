@@ -1,8 +1,13 @@
 import { RequestHandler } from "express";
 import Task from "../models/Task";
 
-const getAllTasks: RequestHandler = (req, res) => {
-  res.send("get all tasks");
+const getAllTasks: RequestHandler = async (req, res) => {
+  try {
+    const tasks = await Task.find({});
+    res.status(200).json({ tasks });
+  } catch (error) {
+    res.status(500).json({ msg: error });
+  }
 };
 
 const createTask: RequestHandler = async (req, res) => {
@@ -14,16 +19,46 @@ const createTask: RequestHandler = async (req, res) => {
   }
 };
 
-const getTask: RequestHandler = (req, res) => {
-  res.send("get single task");
+const getTask: RequestHandler = async (req, res) => {
+  try {
+    const { id: taskID } = req.params;
+    const task = await Task.findOne({ _id: taskID });
+    if (!task) {
+      return res.status(404).json({ msg: `No task with id ${taskID}` });
+    }
+    res.status(200).json({ task });
+  } catch (error) {
+    res.status(500).json({ msg: error });
+  }
 };
 
-const updateTask: RequestHandler = (req, res) => {
-  res.send("update task");
+const updateTask: RequestHandler = async (req, res) => {
+  try {
+    const { id: taskID } = req.params;
+    const task = await Task.findOneAndUpdate({ _id: taskID }, req.body, {
+      new: true,
+      runValidators: true,
+    });
+    if (!task) {
+      return res.status(404).json({ msg: `No task with id ${taskID}` });
+    }
+    res.status(200).json({ task });
+  } catch (error) {
+    res.status(500).json({ msg: error });
+  }
 };
 
-const deleteTask: RequestHandler = (req, res) => {
-  res.send("delete task");
+const deleteTask: RequestHandler = async (req, res) => {
+  try {
+    const { id: taskID } = req.params;
+    const task = await Task.findOneAndDelete({ _id: taskID });
+    if (!task) {
+      return res.status(404).json({ msg: `No task with id ${taskID}` });
+    }
+    res.status(200).json({ task });
+  } catch (error) {
+    res.status(500).json({ msg: error });
+  }
 };
 
 export { getAllTasks, createTask, deleteTask, getTask, updateTask };

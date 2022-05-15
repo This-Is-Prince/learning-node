@@ -8,6 +8,7 @@ const connectDB = (url) => {
     return mongoose_1.default.connect(url, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
+        useFindAndModify: false,
     });
 };
 exports.default = connectDB;
