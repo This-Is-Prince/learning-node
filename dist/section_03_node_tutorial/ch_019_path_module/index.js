@@ -9,5 +9,5 @@ const filePath = path_1.default.join("/content", "subfolder", "test.txt");
 console.log(filePath);
 const base = path_1.default.basename(filePath);
 console.log(base);
-const absolute = path_1.default.resolve(__dirname, "content", "subfolder", "test.txt");
+const absolute = path_1.default.resolve(__dirname, "../content", "subfolder", "test.txt");
 console.log(absolute);
