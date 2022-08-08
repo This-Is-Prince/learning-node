@@ -1,2 +1,2 @@
 "use strict";
-console.log('hi');
+require('./section_03_node_tutorial');
