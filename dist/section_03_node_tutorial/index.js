@@ -6,4 +6,5 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // require('./ch_016_mind_grenade')
 // import './ch_018_os_module'
 // import './ch_019_path_module'
-require("./ch_020_fs_module_sync");
+// import './ch_020_fs_module_sync'
+require("./ch_021_fs_module_async");
