@@ -7,4 +7,5 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // import './ch_018_os_module'
 // import './ch_019_path_module'
 // import './ch_020_fs_module_sync'
-require("./ch_021_fs_module_async");
+// import './ch_021_fs_module_async'
+require("./ch_024_http_module");
