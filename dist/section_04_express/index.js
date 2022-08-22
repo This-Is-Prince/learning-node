@@ -7,4 +7,5 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // import "./ch_063_express_app_example";
 // import "./ch_066_json_basics";
 // import "./ch_067_params_query_string";
-require("./ch_070_query_string");
+// import './ch_070_query_string'
+require("./ch_072_middleware");
